@@ -5,7 +5,8 @@
 #define R_ARCH_ALWAYS_SSE2
 #define R_ARCH_ALWAYS_AVX
 
-/* @TODO: NEON implementation */
+/* @TODO: NEON implementation for ARM and Apple Silicon */
+/* @TODO: SVE for ARM and Apple Silicon (if I can be bothered) */
 /* @TODO: Arithmetic, comparisons, etc. */
 
 #include    "refractor/core/core.h"
