@@ -29,8 +29,6 @@ RV64f _rV64fCopyPointer(void* InCopy)
     return  LocOut;
 }
 
-
-
 RV128i _rV128iCopyPointer(void* InCopy)
 {
     RV128i  LocOut;
@@ -50,8 +48,6 @@ RV128d _rV128dCopyPointer(void* InCopy)
     return  LocOut;
 }
 
-
-
 RV256i _rV256iCopyPointer(void* InCopy)
 {
     RV256i  LocOut;
@@ -70,8 +66,6 @@ RV256d _rV256dCopyPointer(void* InCopy)
     memcpy  (&LocOut, InCopy, sizeof(LocOut));
     return  LocOut;
 }
-
-
 
 RV512i _rV512iCopyPointer(void* InCopy)
 {
@@ -303,6 +297,8 @@ RV256d rV256dCreateV128 (RV128d* InP)
 }
 
 /* RV512 ************************************************************/
+
+/* create */
 
 RV512i rV512iCreateU8   (RU8* InP)
 {

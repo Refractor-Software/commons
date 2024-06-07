@@ -49,6 +49,7 @@
 
 #if defined(R_COMPILER_CL)
     #define R_CL_ALIGN(x) /* not yet implemented */
+    #define R_GCC_ALIGN(X) /* blank */
 #elif defined(R_COMPILER_CLANG) || defined(R_COMPILER_GCC)
     #define R_CL_ALIGN(x)  /* blank */
     #define R_GCC_ALIGN(x) __attribute__((aligned((x))))
