@@ -190,6 +190,23 @@ RV128d rV128dCreateF64  (RF64* InP)
 #endif
 }
 
+RV128i rV128iCreateV64  (RV64i* InP)
+{
+#if defined(R_ARCH_USE_SSE2)
+    RV128i LocOut;
+    LocOut.u.v64[0] = InP[0];
+    LocOut.u.v64[1] = InP[1];
+    return LocOut;
+#else
+    return _rV128iCopyPointer(InP);
+#endif
+}
+
+RV128f rV128fCreateV64  (RV64f* InP)
+{
+    return _rV128fCopyPointer(InP);
+}
+
 /* RV256 ************************************************************/
 
 /* create */
@@ -262,6 +279,138 @@ RV256d rV256dCreateF64  (RF64* InP)
 #endif
 }
 
+RV256i rV256iCreateV64  (RV64i* InP)
+{
+    return _rV256iCopyPointer(InP);
+}
+RV256i rV256iCreateV128 (RV128i* InP)
+{
+    return _rV256iCopyPointer(InP);
+}
+
+RV256f rV256fCreateV64  (RV64f* InP)
+{
+    return _rV256fCopyPointer(InP);
+}
+RV256f rV256fCreateV128 (RV128f* InP)
+{
+    return _rV256fCopyPointer(InP);
+}
+
+RV256d rV256dCreateV128 (RV128d* InP)
+{
+    return _rV256dCopyPointer(InP);
+}
+
 /* RV512 ************************************************************/
+
+RV512i rV512iCreateU8   (RU8* InP)
+{
+    return _rV512iCopyPointer(InP);
+}
+RV512i rV512iCreateS8   (RS8* InP)
+{
+    return _rV512iCopyPointer(InP);
+}
+
+RV512i rV512iCreateU16  (RU16* InP)
+{
+    return _rV512iCopyPointer(InP);
+}
+RV512i rV512iCreateS16  (RS16* InP)
+{
+    return _rV512iCopyPointer(InP);
+}
+
+RV512i rV512iCreateU32  (RU32* InP)
+{
+    return _rV512iCopyPointer(InP);
+}
+RV512i rV512iCreateS32  (RS32* InP)
+{
+    return _rV512iCopyPointer(InP);
+}
+
+RV512f rV512fCreateF32  (RF32* InP)
+{
+#if defined(R_ARCH_USE_AVX)
+    RV512f LocOut;
+    LocOut.u.m256[0] = _mm256_load_ps(InP);
+    LocOut.u.m256[1] = _mm256_load_ps(InP + 8);
+    return LocOut;
+#elif defined(R_ARCH_USE_SSE2)
+    RV512f LocOut;
+    LocOut.u.m128[0] = _mm_load_ps(InP);
+    LocOut.u.m128[1] = _mm_load_ps(InP + 4);
+    LocOut.u.m128[2] = _mm_load_ps(InP + 8);
+    LocOut.u.m128[3] = _mm_load_ps(InP + 12);
+    return LocOut;
+#else
+    return _rV512fCopyPointer(InP);
+#endif
+}
+
+RV512i rV512iCreateU64  (RU64* InP)
+{
+    return _rV512iCopyPointer(InP);
+}
+RV512i rV512iCreateS64  (RS64* InP)
+{
+    return _rV512iCopyPointer(InP);
+}
+
+RV512d rV512dCreateF64  (RF64* InP)
+{
+#if defined(R_ARCH_USE_AVX)
+    RV512d LocOut;
+    LocOut.u.m256d[0] = _mm256_load_pd(InP);
+    LocOut.u.m256d[1] = _mm256_load_pd(InP + 8);
+    return LocOut;
+#elif defined(R_ARCH_USE_SSE2)
+    RV512d LocOut;
+    LocOut.u.m128d[0] = _mm_load_pd(InP);
+    LocOut.u.m128d[1] = _mm_load_pd(InP + 4);
+    LocOut.u.m128d[2] = _mm_load_pd(InP + 8);
+    LocOut.u.m128d[3] = _mm_load_pd(InP + 12);
+    return LocOut;
+#else
+    return _rV512dCopyPointer(InP);
+#endif
+}
+
+RV512i rV512iCreateV64  (RV64i* InP)
+{
+    return _rV512iCopyPointer(InP);
+}
+RV512i rV512iCreateV128 (RV128i* InP)
+{
+    return _rV512iCopyPointer(InP);
+}
+RV512i rV512iCreateV256 (RV256i* InP)
+{
+    return _rV512iCopyPointer(InP);
+}
+
+RV512f rV512fCreateV64  (RV64f* InP)
+{
+    return _rV512fCopyPointer(InP);
+}
+RV512f rV512fCreateV128 (RV128f* InP)
+{
+    return _rV512fCopyPointer(InP);
+}
+RV512f rV512fCreateV256 (RV256f* InP)
+{
+    return _rV512fCopyPointer(InP);
+}
+
+RV512d rV512dCreateV128 (RV128d* InP)
+{
+    return _rV512dCopyPointer(InP);
+}
+RV512d rV512dCreateV256 (RV256d* InP)
+{
+    return _rV512dCopyPointer(InP);
+}
 
 #endif  /*  REFRACTOR_MATH_DETAIL_VREG_MATH_H  */
