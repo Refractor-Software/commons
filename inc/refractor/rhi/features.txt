@@ -1,4 +1,0 @@
-Features of the RHI Utility:
-
-- Virtual Geometry (no more LODs, ever)
-- Virtual Textures

@@ -58,7 +58,7 @@
 #define R_RESTRICT __restrict
 
 #if defined(R_PLATFORM_WIN)
-#include "__detail/win64_core.h"
+#include "__detail/core_win64.h"
 #elif defined(R_PLATFORM_LNX)
 #include "__detail/gnulnx_core.h"
 #endif

@@ -1,0 +1,6 @@
+Features of the Render API Utility:
+
+- Abstraction of API features
+- Support for Vulkan, Direct3D, and Metal
+- Virtual Geometry (no more LODs, ever)
+- Virtual Textures
