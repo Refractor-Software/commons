@@ -1,7 +1,13 @@
 #ifndef     REFRACTOR_MATH_IMPL_AVX_H
 #define     REFRACTOR_MATH_IMPL_AVX_H
 
+#ifndef REFRACTOR_MATH_INCLUDE
 #include    "../refractor_math.h"
+#endif
+
+#ifdef      __cplusplus
+extern "C" {
+#endif
 
 /* --------------------------------------------------------
  * VECTOR LOAD
@@ -10,7 +16,7 @@
 RfrVec4i rfr_math_vec4i_load(int* const inInts)
 {
 #if defined(RFR_MATH_ARCH_AVX)
-    return _mm_load_epi32(inInts);
+    return _mm_load_si128((__m128i*)inInts);
 #elif defined(RFR_MATH_ARCH_NEON)
 
 #endif
@@ -376,5 +382,9 @@ RfrVec4d rfr_math_vec4d_div(RfrVec4d inLHS, RfrVec4d inRHS)
 
 #endif
 }
+
+#ifdef      __cplusplus
+} /* extern "C" */
+#endif
 
 #endif  /*  REFRACTOR_MATH_IMPL_AVX_H  */

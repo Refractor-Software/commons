@@ -14,12 +14,14 @@ ADD_LIBRARY (rcommons OBJECT ${_RC_SOURCES_})
 
 TARGET_INCLUDE_DIRECTORIES (rcommons PUBLIC commons)
 
+ADD_EXECUTABLE(avx_test a_test.cpp)
+
+TARGET_LINK_LIBRARIES(avx_test PUBLIC rcommons)
+
 # link-time / whole-program optimization
-IF (MSVC)
-    ADD_COMPILE_OPTIONS ("/GL")
-    ADD_COMPILE_OPTIONS ("/arch:AVX")
-    ADD_LINK_OPTIONS    ("/LTCG")
-ELSE ()
-    ADD_COMPILE_OPTIONS ("-flto")
-    ADD_COMPILE_OPTIONS ("-mavx")
-ENDIF ()
+#IF (MSVC)
+#    ADD_COMPILE_OPTIONS (/GL /arch:AVX)
+#    ADD_LINK_OPTIONS    (/LTCG)
+#ELSE ()
+    SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native --static")
+#ENDIF ()

@@ -361,4 +361,6 @@ RfrVec4d rfr_math_vec4d_div(RfrVec4d inLHS, RfrVec4d inRHS);
 } /* extern "C" */
 #endif
 
+#include "__impl/r_math_impl_avx.h"
+
 #endif  /*  REFRACTOR_MATH_INCLUDE  */
