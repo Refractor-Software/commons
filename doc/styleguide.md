@@ -1,3 +1,9 @@
+# Types
+
+When possible, prefer to use opaque or standard types instead of
+custom structs/unions/enums. This is mainly for de-coupling and
+reusability across projects.
+
 # Naming Convention
 
 Long and descriptive names are good.
@@ -9,9 +15,6 @@ RfrModuleObject
 rfr_module_object_function()
 preMyVariable
 ```
-
-The only exception to this is the Vector Math library, whose functions
-generally ~~~~resemble assembly instructions.
 
 Variable prefixes vary by context:
 - `loc` for local variables
@@ -41,11 +44,27 @@ Managers, controllers, and handlers are a red flag.
 
 # Line Limit
 
-Lines should be no more than 110 lines long.
+Lines should be no more than 120 lines long.
 This allows for descriptive names and will still fit on most modern monitors.
+Diffs and merges might be a pain in the ass, but we think it will be worth it.
 
 # API Design
 
 Steve Jobs: Start with the user, and work your way back to the technology.
 
 Start from the outside (the API) and work backwards to the implementation.
+
+Ensure that you follow the following five rules of reusable API design, as
+outlined by Casey Muratori in *Designing and Evaluating Reusable Components*:
+
+- Granularity (Flexibility vs. Simplicity)
+- Redundancy (Convenience vs. Orthogonality)
+- Coupling (Less is better)
+- Retention (Synchronization vs. Automation)
+- Flow Control (Maximum control for the client)
+
+If you follow these rules, your API will be the most stable and powerful
+it can be.
+
+Casey's blog post and talk can be found [here](https://caseymuratori.com/blog_0024).
+Please listen to it in its entirety to best understand these concepts.

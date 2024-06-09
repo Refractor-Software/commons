@@ -1,13 +1,13 @@
 CMAKE_MINIMUM_REQUIRED (VERSION 3.28)
 
-PROJECT (_RefractorCommons_ LANGUAGES C)
+PROJECT (_RefractorCommons_ LANGUAGES CXX)
 
-SET (CMAKE_C_STANDARD 90)
+SET (CMAKE_CXX_STANDARD 20)
 
 FILE (GLOB_RECURSE _RC_SOURCES_
-    commons/*.c
-        commons/*.h
-        commons/*.inl
+    commons/*.cpp
+    commons/*.h
+    commons/*.inl
 )
 
 ADD_LIBRARY (rcommons OBJECT ${_RC_SOURCES_})
