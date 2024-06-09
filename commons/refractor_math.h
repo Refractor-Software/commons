@@ -10,7 +10,10 @@ extern "C" {
 
 /* ------ Vector Register Types ------
  * Refractor math is based around vector math operations.
- * We directly interface with instruction intrinsics for maximum performance. */
+ * We directly interface with instruction intrinsics for maximum performance.
+ * 
+ * @TODO - Need to convert this to not use custom data types. Prefer opaque void* instead,
+ * @TODO   it'll also be easier to support other SIMD architectures. */
 
 #if defined(__ARM_NEON)
     #define RFR_MATH_ARCH_NEON
