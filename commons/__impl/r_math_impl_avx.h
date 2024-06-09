@@ -318,7 +318,8 @@ RfrVec4d rfr_math_vec4d_mul(RfrVec4d inLHS, RfrVec4d inRHS)
 RfrVec4i rfr_math_vec4i_div(RfrVec4i inLHS, RfrVec4i inRHS)
 {
 #if defined(RFR_MATH_ARCH_AVX)
-    //return _mm_div_epi32(inLHS, inRHS);
+    /* this is awful but it should work for now */
+    return _mm_cvtps_epi32(_mm_div_ps(_mm_cvtepi32_ps(inLHS), _mm_cvtepi32_ps(inRHS)));
 #elif defined(RFR_MATH_ARCH_NEON)
 
 #endif
@@ -349,9 +350,10 @@ RfrVec8i rfr_math_vec8i_div(RfrVec8i inLHS, RfrVec8i inRHS)
     RfrVec4i locReg1, locReg2, locReg3, locReg4;
     _mm256_storeu2_m128i(&locReg1, &locReg2, inLHS);
     _mm256_storeu2_m128i(&locReg3, &locReg4, inRHS);
-    //RfrVec4i locResult1 = _mm_div_epi32(locReg1, locReg3);
-    //RfrVec4i locResult2 = _mm_div_epi32(locReg2, locReg4);
-    //return _mm256_loadu2_m128i(&locResult1, &locResult2);
+    /* again this is awful but it should work for now */
+    RfrVec4i locResult1 = _mm_cvtps_epi32(_mm_div_ps(_mm_cvtepi32_ps(locReg1), _mm_cvtepi32_ps(locReg3)));
+    RfrVec4i locResult2 = _mm_cvtps_epi32(_mm_div_ps(_mm_cvtepi32_ps(locReg2), _mm_cvtepi32_ps(locReg4)));
+    return _mm256_loadu2_m128i(&locResult1, &locResult2);
 #elif defined(RFR_MATH_ARCH_NEON)
 
 #endif
