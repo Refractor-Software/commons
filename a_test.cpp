@@ -41,7 +41,7 @@ static void rfr_test_vec4d_sprintf(RfrVec4d* inVector, const char* inPrefix, std
      * Do not use in shipping. */
     double* locAsDbl = (double*)inVector;
     char locAppend[256];
-    sprintf(locAppend, "%s Vec4d - X=%f, Y=%f, Z=%f, W=%f \n", inPrefix, locAsDbl[0], locAsDbl[1], locAsDbl[2], locAsDbl[3]);
+    sprintf(locAppend, "%s Vec4d - X=%.2f, Y=%.2f, Z=%.2f, W=%.2f \n", inPrefix, locAsDbl[0], locAsDbl[1], locAsDbl[2], locAsDbl[3]);
     outStream.append(locAppend);
 }
 
