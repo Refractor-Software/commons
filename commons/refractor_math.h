@@ -18,7 +18,7 @@ extern "C" {
 #if defined(__ARM_NEON)
     #define RFR_MATH_ARCH_NEON
     #include "arm_neon.h"
-#elif defined(__x86_64__) /* AMD64 requires AVX support */
+#elif defined(__x86_64__) /* x86/x64 requires AVX support */
     #define RFR_MATH_ARCH_AVX
     #include "immintrin.h"
     typedef __m128i     RfrVec4i;
